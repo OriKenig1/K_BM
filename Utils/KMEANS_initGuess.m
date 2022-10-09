@@ -4,7 +4,7 @@ function GMMStruct_0 = KMEANS_initGuess(x,M)
 
 GMMStruct_0 = CreateGMMStruct(p, M);
 
-[idx,C] = kmeans(x,M,'MaxIter',200);
+[idx,C] = kmedoids(x,M,'Replicates',200,'Distance',"mahalanobis");
 
 for m = 1:M
 
@@ -15,5 +15,3 @@ for m = 1:M
     GMMStruct_0.Covars(:,:,m) = eye(p);
 
 end
-
-GMMStruct_0.Alpha = GMMStruct_0.Alpha;

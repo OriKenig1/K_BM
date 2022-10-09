@@ -4,7 +4,7 @@ function [GMMStruct_K,h] = K_BM_GMM(x,M,h,GMMStruct_0,MaxIter,tol)
 
 % Initialize %
 
-GMMStruct = KEM_initGuess(x,h,M,MaxIter,tol,GMMStruct_0);
+GMMStruct = GMMStruct_0;
 
 GMMStruct_prime = GMMStruct;
 

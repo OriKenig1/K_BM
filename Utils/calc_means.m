@@ -2,6 +2,8 @@ function means = calc_means(x,h,GMMStruct,rho,lambda,omega,gamma)
 
     M = GMMStruct.Order;
 
+    p = GMMStruct.Dim;
+
     means = zeros(GMMStruct.Dim, M);
 
     covars_inv = calc_covars_inv(GMMStruct.Covars);
@@ -12,7 +14,9 @@ function means = calc_means(x,h,GMMStruct,rho,lambda,omega,gamma)
 
     for m = 1:M
 
-        Gamma = covars_inv(:,:,m) - rho(m)./lambda(m) * covars_h_inv(:,:,m);
+        Gamma = covars_inv(:,:,m) - rho(m)/( lambda(m) + 1e-200 ) * covars_h_inv(:,:,m);
+
+        invGamma = inv(Gamma + eye(p)*1e-20);
 
         mu_omega = ( sum( omega .* gamma(:,m) .* x) ./ ( lambda(m) + 1e-200 ) )';
 
@@ -20,7 +24,7 @@ function means = calc_means(x,h,GMMStruct,rho,lambda,omega,gamma)
 
         mu_phi = ( sum( phi .* x) ./ ( sum(phi) + 1e-200 ) )';
 
-        means(:,m) = inv(Gamma) * ( covars_inv(:,:,m) * mu_omega - rho(m)/( lambda(m) + 1e-200 ) * covars_h_inv(:,:,m) * mu_phi );
+        means(:,m) = invGamma * ( covars_inv(:,:,m) * mu_omega - rho(m)/( lambda(m) + 1e-200 ) * covars_h_inv(:,:,m) * mu_phi );
 
     end
 

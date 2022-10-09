@@ -25,11 +25,10 @@ function [covars,exit] = calc_covars(x,h,GMMStruct,omega,gamma,rho,lambda)
             ( covars_h(:,:,m) - covars_phi ) * ...
             covars_h_inv(:,:,m) * covars_prev(:,:,m); 
 
-        curr_det = det(covars(:,:,m));
         curr_cond = cond(covars(:,:,m));
         pos_eig = all(eig(covars(:,:,m)) > 0);
 
-        if curr_cond > 10^3 || abs(curr_det) > 10^3 || ~ pos_eig
+        if curr_cond > 300 || ~ pos_eig
 
             covars(:,:,m) = covars_prev(:,:,m);
 

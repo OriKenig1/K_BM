@@ -1,13 +1,41 @@
 
-function [GMMStruct,h] = K_BM(x,M,I,GMMStruct_0,MaxIter,tol)
+function [GMMStruct,h_opt] = K_BM(x,M,I,GMMStruct_0,MaxIter,tol)
 
-    % K_BM, runs the K-BM algorithm with data x. 
-    % Selection of the bandiwdth parameter is done via the L2 method.
-    % M is the number of clusters, I is the search interval of h
-    % GMMStrcuct_ 0 is the initialized value of the vector parameters,
-    % default is calculated via the k-means method.
-    % The function returns the estimated GMM and the selectd bandwidth
-    % parameter
+% This function performs GMM parameter estimation using the K-BM algorithm.
+
+% Usage:
+
+% [GMMStruct,h_opt] = K_BM(x,M,I,GMMStruct_0,MaxIter,tol)
+
+% Inputs:
+
+% x - Nxp obserations array, where N denotes the number of observations and p denotes the dimension.
+
+% I - Selection interval for h_opt
+
+% GMMStruct_0 - Initalized GMM parameters structure:
+
+%                            GMMStruct.Dim: Dimension.
+
+%                            GMMStruct.Order: Order (number of Gaussians).
+
+%                            GMMStruct.Alpha: mixing proportions (Orderx1).
+
+%                            GMMStruct.Means: mean vectors (DimensionxOrder).
+
+%                            GMMStruct.Covars: covariance matrices  (DxDxOrder).
+
+% MaxIter - maximal iterations.
+
+% tol - The lgorithm's tolerance between each iterations
+
+% Outputs:
+
+% GMMStruct - Result structure
+
+% h_opt - The selected optimal bandwidth parameter
+
+% By O. Kenig ( orikenig@gmail.com ) and K. Todros ( todros@widemed.com )
 
     arguments
         x double
@@ -36,6 +64,6 @@ function [GMMStruct,h] = K_BM(x,M,I,GMMStruct_0,MaxIter,tol)
 
     GMMStruct = cell2mat(results(h_idx));
 
-    h = I(h_idx);
+    h_opt = I(h_idx);
     
 end

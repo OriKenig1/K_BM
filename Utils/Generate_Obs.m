@@ -1,4 +1,4 @@
-function x = Generate_Obs(GMMStruct,GMMStruct_cont,N,epsilon)
+function [x,x_org,x_cont] = Generate_Obs(GMMStruct,GMMStruct_cont,N,epsilon)
 
     alphabet = [0,1];
     prob = [1-epsilon,epsilon];
@@ -23,5 +23,7 @@ function x = Generate_Obs(GMMStruct,GMMStruct_cont,N,epsilon)
     end
     
     x = (1-U).*x + U.*x_int;
+    x_org = x(find(U==0),:);
+    x_cont = x(find(U==1),:);
 
 end

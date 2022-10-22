@@ -1,4 +1,4 @@
-function total = MISE(GMM1, GMM2)
+function total = ISE(GMM1, GMM2)
     total = 0;
     Order = GMM1.Order;
     

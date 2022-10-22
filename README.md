@@ -12,4 +12,6 @@ To run the example in Test_K_BM.m:
 
 (3) Run Test_K_BM.m
 
-By O. Kenig ( orikenig@gmail.com ) and K. Todros ( todros@widemed.com )
+For faster results, we recommend enabling the parallel option in Matlab.
+
+By O. Kenig (orikenig@gmail.com) and K. Todros (todros@post.bgu.ac.il)

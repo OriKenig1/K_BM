@@ -1,4 +1,4 @@
-function [GMMStruct_K,h] = K_BM_GMM(x,M,h,GMMStruct_0,MaxIter,tol)
+function [GMMStruct_K,h] = K_BM_GMM(x,h,GMMStruct_0,MaxIter,tol)
 
 [N,~] = size(x);
 

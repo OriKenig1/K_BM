@@ -35,14 +35,14 @@ function [GMMStruct,h_opt] = K_BM(x,M,I,GMMStruct_0,MaxIter,tol)
 
 % h_opt - The selected optimal bandwidth parameter
 
-% By O. Kenig ( orikenig@gmail.com ) and K. Todros ( todros@widemed.com )
+% By O. Kenig (orikenig@gmail.com) and K. Todros (todros@post.bgu.ac.il)
 
     arguments
         x double
         M double
         I double = 1:20
         GMMStruct_0 = KMEANS_initGuess(x,M);
-        MaxIter double = 30
+        MaxIter double = 50
         tol double = 10^-13
     end
 
@@ -52,7 +52,7 @@ function [GMMStruct,h_opt] = K_BM(x,M,I,GMMStruct_0,MaxIter,tol)
              
             curr_h = I(h_idx);
 
-            GMMStruct = K_BM_GMM(x,M,curr_h,GMMStruct_0,MaxIter,tol);
+            GMMStruct = K_BM_GMM(x,curr_h,GMMStruct_0,MaxIter,tol);
 
             AMISE{h_idx} = calc_V(x,GMMStruct);
 

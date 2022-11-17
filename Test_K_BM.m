@@ -72,7 +72,10 @@ GMMStruct_cont.Covars = Sigma_cont;
 % -------------------------------------------
 % Initialize 
 
-[x,x_org,x_cont] = Generate_Obs(GMMStruct_Org,GMMStruct_cont,N,epsilon);
+% Use this to generate new samples
+%[x,x_org,x_cont] = Generate_Obs(GMMStruct_Org,GMMStruct_cont,N,epsilon);
+
+load('samples.mat')
 
 GMMStruct_0 = KMEANS_initGuess(x,Order);
 

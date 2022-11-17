@@ -14,4 +14,6 @@ To run the example in Test_K_BM.m:
 
 For faster results, we recommend enabling the parallel option in Matlab.
 
+The code was written and tested in MATLAB R2022b.
+
 By O. Kenig (orikenig@gmail.com) and K. Todros (todros@post.bgu.ac.il)

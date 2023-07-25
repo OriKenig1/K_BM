@@ -2,15 +2,17 @@
 
 MATLAB implementation of the K-BM algorithm
 
-The K_BM.m is the main routine for running the K_BM algorithm.
+The code includes the K-BM for GMM and model order selection via the K-BIC.
 
-To run the example in Test_K_BM.m:
+## How to Run
 
-(1) Add ( not including sub-folders ) the K_BM folder to the Matlab path
+The COMPLETE_KBM.m is the main routine for running the K-BM algorithm.
 
-(2) Add the K_BM/utils folder to the Matlab path
+To run it, follow these steps:
 
-(3) Run Test_K_BM.m
+    (1) Add all folders and sub folders in this reposetory to your MATLAB path
+
+    (2) Run RUN_COMPLETE_KBM.m
 
 For faster results, we recommend enabling the parallel option in Matlab.
 

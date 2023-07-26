@@ -31,7 +31,7 @@ function covars = calc_covars(x,h,GMMStruct,weights,gamma,rho,lambda)
 
         % Update the eigenvalues matrix
 
-        lambda_max = max( std(x).^2 );
+        lambda_max = 10 * max( std(x).^2 );
 
         for q = 1:p
             EIG(q,q) = min(max(EIG(q,q),lambda_max/10^5),lambda_max);
